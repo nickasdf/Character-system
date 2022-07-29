@@ -20,9 +20,16 @@ namespace Character_system
     /// </summary>
     public partial class MainWindow : Window
     {
+        static string Character;
+        
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
+
+
+
+
 }
