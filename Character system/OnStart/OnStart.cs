@@ -4,7 +4,7 @@ namespace Character_system.OnStart
 {
     internal class OnStart : LoaderReader
     {
-        static Character character;
+        static Character.Character character;
 
         public OnStart()
         {
