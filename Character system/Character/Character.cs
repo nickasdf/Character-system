@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Character_system
+namespace Character_system.Character
 {
     internal class Character
     {
