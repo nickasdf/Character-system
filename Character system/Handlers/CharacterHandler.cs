@@ -14,25 +14,21 @@ namespace Character_system.Handlers
         }
 
 
-        public string AddObject(Character.Character character, Character.CharacterObject obj, int number = 1)
+        public bool AddObject(Character.Character character, Character.CharacterObject obj, int number = 1)
         {
-#pragma warning disable CS0162 // Unreachable code detected
-            for (int i = 0; i < number; i++)
+            foreach (var i in Enumerable.Range(0, number))
             {
-                if (character.currentWeight + obj.weight < character.maxCapacity & number <= 0 )
+                if (character.currentWeight + obj.weight < character.maxCapacity)
                 {
                     character.items.Add(obj);
                     character.currentWeight += obj.weight;
-                    return "object(s) " + obj.name + " was added successfully  " ;
                 }
                 else
                 {
-                    return "was added just " + Convert.ToString(i) + "Objects";
+                    return false;
                 }
             }
-#pragma warning restore CS0162 // Unreachable code detected 
-            // просто відключає єбучий warning щоб не засоряв проект 
-            return "unexpected error";
+            return true;
         }
 
 
