@@ -10,14 +10,9 @@ namespace Character_system.Character
     {
         public float maxCapacity;
         public float currentWeight;
-
-        public List<CharacterAttribute> prioratyAttribute;
-         
+        public List<CharacterAttribute> priorityAttribute;
         public string name;
         public List<CharacterObject> items;
-
-       
-
 
         public override string ToString()
         {
@@ -27,14 +22,14 @@ namespace Character_system.Character
                 items += item.ToString();
             }
             return "Name : " + name + "\n" +
-               "Max Capacity : " + maxCapacity + "\n" + items ;
-
+               "Max Capacity : " + maxCapacity + "\n" + items;
         }
-        public Character(float maxCapacity = 0, string name = null, List<CharacterObject> items = null)
+        public Character(float maxCapacity = 0, string name = null, List<CharacterObject> items = null, List<CharacterAttribute> priorityAttribute = null)
         {
             this.maxCapacity = maxCapacity;
             this.name = name;
             this.items = items;
+            this.priorityAttribute = priorityAttribute;
             currentWeight = 0;
         }
 
