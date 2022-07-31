@@ -9,16 +9,34 @@ namespace Character_system.Character
     internal class Character
     {
         public float maxCapacity;
+        public float currentObjectsWeight ;
+
+        public List<CharacterAttribute> prioratyAtribute;
+
         public string name;
         public List<CharacterObject> items;
 
+       
 
 
-        public Character(float weight, string name)
+        public override string ToString()
         {
-            this.maxCapacity = weight;
-            this.name = name;
+            string items = "";
+            foreach (var item in this.items)
+            {
+                items += item.ToString();
+            }
+            return "Name : " + name + "\n" +
+               "Max Capacity : " + maxCapacity + "\n" + items ;
+
         }
-            
+        public Character(float maxCapacity = 0, string name = null, List<CharacterObject> items = null)
+        {
+            this.maxCapacity = maxCapacity;
+            this.name = name;
+            this.items = items;
+            currentObjectsWeight = 0;
+        }
+
     }
 }

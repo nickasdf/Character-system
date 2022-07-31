@@ -11,7 +11,7 @@ namespace Character_system
     /// </summary>
     public partial class MainWindow : Window
     {
-        static Character.Character character;
+        static Character.Character character = null;
         
         public MainWindow()
         {
@@ -24,36 +24,39 @@ namespace Character_system
 
             // 1. Test CharacterAttribute, CharacterAttribute
 
-            /*CharacterAttribute agility = new CharacterAttribute("agility", 5);
-            CharacterAttribute crit = new CharacterAttribute("crit", "30%");
+            //CharacterAttribute agility = new CharacterAttribute("agility", 5);
+            //CharacterAttribute crit = new CharacterAttribute("crit", "30%");
 
-            CharacterObject sword = new CharacterObject("Iron sword", "An old iron sword", 4.5f, new List<CharacterAttribute>{agility, crit});
+            //CharacterObject sword = new CharacterObject("Iron sword", "An old iron sword", 4.5f, new List<CharacterAttribute> { agility, crit });
 
-            var textBlock = new TextBlock();
-            textBlock.FontSize = 30;
-            textBlock.Text = sword.ToString();
-            textBlock.HorizontalAlignment = HorizontalAlignment.Center;
-            textBlock.VerticalAlignment = VerticalAlignment.Center;
-            grid.Children.Add(textBlock);*/
+            //var textBlock = new TextBlock();
+            //textBlock.FontSize = 30;
+            //textBlock.Text = sword.ToString();
+            //textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+            //textBlock.VerticalAlignment = VerticalAlignment.Center;
+            //grid.Children.Add(textBlock);
 
-            // 2. Test Load in file, Read from file
+            //2.Test Load in file, Read from file
 
-            /*string pathFile = "agility.attr";
-            CharacterAttribute agility = new CharacterAttribute("agility", 5);
-            Services.LoaderReader.WriteToBinaryFile(pathFile, agility);
-            bool exist = File.Exists(pathFile);
-            CharacterAttribute someAttribute = Services.LoaderReader.ReadFromBinaryFile<CharacterAttribute>(pathFile);
+            //string pathFile = "agility.attr";
+            //CharacterAttribute agility = new CharacterAttribute("agility", 5);
+            //Services.LoaderReader.WriteToBinaryFile(pathFile, agility);
+            //bool exist = File.Exists(pathFile);
+            //CharacterAttribute someAttribute = Services.LoaderReader.ReadFromBinaryFile<CharacterAttribute>(pathFile);
 
-            var textBlock = new TextBlock();
-            textBlock.FontSize = 30;
-            textBlock.HorizontalAlignment = HorizontalAlignment.Center;
-            textBlock.VerticalAlignment = VerticalAlignment.Center;
+            //var textBlock = new TextBlock();
+            //textBlock.FontSize = 30;
+            //textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+            //textBlock.VerticalAlignment = VerticalAlignment.Center;
 
-            textBlock.Text = "1 created CharacterAttribute object: \n" + agility.ToString() + '\n' + 
-                "2 the file " + pathFile + " exists = " + exist.ToString() + '\n' +
-                "3 read CharacterAttribute object from file " + pathFile + ":\n" + someAttribute;
+            //textBlock.Text = "1 created CharacterAttribute object: \n" + agility.ToString() + '\n' +
+            //    "2 the file " + pathFile + " exists = " + exist.ToString() + '\n' +
+            //    "3 read CharacterAttribute object from file " + pathFile + ":\n" + someAttribute;
+            //grid.Children.Add(textBlock);
 
-            grid.Children.Add(textBlock); */
+            //Task 3
+
+
         }
     }
 
