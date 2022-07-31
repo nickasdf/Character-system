@@ -9,10 +9,10 @@ namespace Character_system.Character
     internal class Character
     {
         public float maxCapacity;
-        public float currentObjectsWeight ;
+        public float currentWeight;
 
-        public List<CharacterAttribute> prioratyAtribute;
-
+        public List<CharacterAttribute> prioratyAttribute;
+         
         public string name;
         public List<CharacterObject> items;
 
@@ -35,7 +35,7 @@ namespace Character_system.Character
             this.maxCapacity = maxCapacity;
             this.name = name;
             this.items = items;
-            currentObjectsWeight = 0;
+            currentWeight = 0;
         }
 
     }

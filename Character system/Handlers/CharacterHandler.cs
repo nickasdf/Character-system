@@ -19,10 +19,10 @@ namespace Character_system.Handlers
 #pragma warning disable CS0162 // Unreachable code detected
             for (int i = 0; i < number; i++)
             {
-                if (character.currentObjectsWeight + obj.weight < character.maxCapacity & number <= 0 )
+                if (character.currentWeight + obj.weight < character.maxCapacity & number <= 0 )
                 {
                     character.items.Add(obj);
-                    character.currentObjectsWeight += obj.weight;
+                    character.currentWeight += obj.weight;
                     return "object(s) " + obj.name + " was added successfully  " ;
                 }
                 else
@@ -38,7 +38,7 @@ namespace Character_system.Handlers
 
         public void AddPrioratyAttribute(Character.Character character, Character.CharacterAttribute prioratyAtribute)
         {
-            character.prioratyAtribute.Add(prioratyAtribute);
+            character.prioratyAttribute.Add(prioratyAtribute);
         }
     }
 }
