@@ -8,6 +8,7 @@ namespace Character_system.Character
 {
     internal class Character
     {
+
         public float maxCapacity;
         public float currentWeight;
         public List<CharacterAttribute> priorityAttribute;
@@ -32,6 +33,6 @@ namespace Character_system.Character
             this.priorityAttribute = priorityAttribute;
             currentWeight = 0;
         }
-
+        public static Character character { get; set; }
     }
 }

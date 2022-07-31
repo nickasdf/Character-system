@@ -11,13 +11,32 @@ namespace Character_system
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        static Character.Character character = null;
-        
+    {   
         public MainWindow()
         {
             InitializeComponent();
             
+            //List<CharacterAttribute> characterAttributes = new List<CharacterAttribute>();
+            //characterAttributes.Add(new CharacterAttribute("age", 5923));
+            //characterAttributes.Add(new CharacterAttribute("width", 100));
+            //characterAttributes.Add(new CharacterAttribute("height", 2));
+            //characterAttributes.Add(new CharacterAttribute("dick size", 17));
+
+            //List<CharacterObject> items = new List<CharacterObject>();
+
+            //List<CharacterAttribute> attributes = new List<CharacterAttribute>();
+            //attributes.Add(new CharacterAttribute("agility", 30));
+            //attributes.Add(new CharacterAttribute("attack", 0.2f));
+
+            //items.Add(new CharacterObject("bread", "taste and cool bread", 5.2f, attributes));
+
+            //attributes.Clear();
+            //attributes.Add(new CharacterAttribute("strength", 20));
+            //attributes.Add(new CharacterAttribute("armor", 0.4f));
+
+            //items.Add(new CharacterObject("crown", "A gold crown", 2.4f, attributes));
+
+            //Character.Character.character = new Character.Character(30, "NIGGA", items, characterAttributes);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

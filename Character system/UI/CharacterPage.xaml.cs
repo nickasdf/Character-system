@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Character_system.UI
 {
@@ -23,6 +11,16 @@ namespace Character_system.UI
         public CharacterPage()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            /*ListBoxItem listBoxItem = new ListBoxItem();
+            
+            foreach (var item in Character.Character.character.items)
+            {
+                listBoxItem.Content = item.ToString();
+            }*/
         }
     }
 }
