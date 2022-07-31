@@ -7,8 +7,8 @@ namespace Character_system.Character
     class CharacterAttribute
     {
         public string name;
-        public object value;
-        public CharacterAttribute(string name=null, object value=null)
+        public float value;
+        public CharacterAttribute(string name=null, float value=0)
         {
             this.name = name;
             this.value = value;
