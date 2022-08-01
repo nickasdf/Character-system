@@ -14,17 +14,12 @@ namespace Character_system.UI
         public CharacterPage()
         {
             InitializeComponent();
-
-
-            List<Character.CharacterAttribute> allAttributes = new List<Character.CharacterAttribute>();
+            /*List<Character.CharacterAttribute> allAttributes = new List<Character.CharacterAttribute>();
 
             allAttributes = new List<CharacterAttribute>();
             addObject(allAttributes,40);
             
-
-            LstAttributes.ItemsSource = allAttributes;
-
-
+            LstAttributes.ItemsSource = allAttributes;*/
         }
 
         void addObject(List<CharacterAttribute> lst , int  number = 3 )
@@ -38,12 +33,8 @@ namespace Character_system.UI
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            /*ListBoxItem listBoxItem = new ListBoxItem();
-            
-            foreach (var item in Character.Character.character.items)
-            {
-                listBoxItem.Content = item.ToString();
-            }*/
+            listboxCharacterStatus.ItemsSource = new CharacterStatus().allAttributes;
+            listboxCharacterObjects.ItemsSource = Character.Character.character.items;
         }
     }
 }

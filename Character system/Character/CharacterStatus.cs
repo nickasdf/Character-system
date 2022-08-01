@@ -4,17 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Character_system
+namespace Character_system.Character
 {
     internal class CharacterStatus
     {
-        List<Character.CharacterAttribute> allAttributes;
-
+        public List<CharacterAttribute> allAttributes;
         public CharacterStatus()
         {
-            allAttributes = new List<Character.CharacterAttribute>();
+            this.allAttributes = new List<CharacterAttribute>();
+            List<CharacterAttribute> allAttributes = new List<CharacterAttribute>();
+            foreach (var item in new List<CharacterObject>(Character.character.items))
+                foreach (var attibute in item.attributes)
+                    allAttributes.Add(new CharacterAttribute(attibute));
+            var names = from attribute in allAttributes group attribute by attribute.name;
+            foreach (var name in names)
+            {
+                if (name.Count() > 1)
+                {
+                    this.allAttributes.Add(name.ElementAt(0));
+                    var list = name.ToList();
+                    list.RemoveAt(0);
+                    foreach (CharacterAttribute attribute in list)
+                        this.allAttributes[this.allAttributes.Count - 1].value += attribute.value;
+                }
+                else
+                    this.allAttributes.Add(name.ElementAt(0));
+            }
         }
-        public bool Equals(Character.CharacterAttribute attribute1, Character.CharacterAttribute attribute2)
+        public bool Equals(CharacterAttribute attribute1, CharacterAttribute attribute2)
         {
             if (attribute1.name == attribute2.name)
             {
@@ -22,7 +39,7 @@ namespace Character_system
             }
             return false;
         }
-        public void Fillstatus(Character.Character character)
+        /*public void Fillstatus(Character character)
         {
             allAttributes.Clear();
             foreach (var item in character.items)
@@ -35,7 +52,7 @@ namespace Character_system
                     }
                     else
                     {
-                        foreach (var uniqueAttribute in allAttributes)
+                        foreach (var uniqueAttribute in new List<CharacterAttribute>(allAttributes))
                         {
                             if (Equals(uniqueAttribute, attribute))
                             {
@@ -49,6 +66,6 @@ namespace Character_system
                     }
                 }
             }
-        }
+        }*/
     }
 }
