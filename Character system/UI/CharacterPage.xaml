@@ -15,15 +15,12 @@
             <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
-        <ListBox Name="LstAttributes">
+        <ListBox Name="listboxCharacterStatus" Grid.Column="0" Grid.Row="0">
             
         </ListBox>
+        
+        <ListBox x:Name="listboxCharacterObjects" Grid.Column="1" Grid.Row="0">
 
-        <ScrollViewer x:Name="objectsScroll" Grid.Column="1" Grid.Row="0">
-            <ListBox x:Name="listboxScroll">
-                
-                
-            </ListBox>
-        </ScrollViewer> 
+        </ListBox>
     </Grid>
 </Page>

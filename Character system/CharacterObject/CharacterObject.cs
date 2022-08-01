@@ -13,6 +13,11 @@ namespace Character_system.Character
             this.name = name;
             this.value = value;
         }
+        public CharacterAttribute(CharacterAttribute characterAttribute)
+        {
+            name = characterAttribute.name;
+            value = characterAttribute.value;
+        }
 
         public override string ToString()
         {

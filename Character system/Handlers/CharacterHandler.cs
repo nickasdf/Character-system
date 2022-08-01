@@ -32,7 +32,7 @@ namespace Character_system.Handlers
         }
 
 
-        public void AddpriorityAttribute(Character.Character character, Character.CharacterAttribute prioratyAtribute)
+        public void AddPriorityAttribute(Character.Character character, Character.CharacterAttribute prioratyAtribute)
         {
             character.priorityAttribute.Add(prioratyAtribute);
         }
