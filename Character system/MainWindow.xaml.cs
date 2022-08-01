@@ -15,7 +15,10 @@ namespace Character_system
         public MainWindow()
         {
             InitializeComponent();
+        }
 
+        private void TestCharacter()
+        {
             List<CharacterAttribute> characterAttributes = new List<CharacterAttribute>();
             characterAttributes.Add(new CharacterAttribute("age", 5923));
             characterAttributes.Add(new CharacterAttribute("width", 100));
@@ -42,6 +45,7 @@ namespace Character_system
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            TestCharacter();
             if (true)
             {
                 frame.Source = new Uri("UI/CharacterPage.xaml", UriKind.RelativeOrAbsolute);

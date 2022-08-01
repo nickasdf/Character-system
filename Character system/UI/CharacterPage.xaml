@@ -18,8 +18,9 @@
             <RowDefinition Height="0.9*"/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-        <ListBox Name="listboxCharacterStatus" Grid.Column="0" Grid.Row="0">
-            
+        <ListBox x:Name="listboxCharacterStatus" Grid.Column="0" Grid.Row="0" Background="AntiqueWhite" HorizontalContentAlignment="Stretch">
+
+
         </ListBox>
         <Button Content="addAttibute" Height="30" Width="100" Grid.Column="0" Grid.Row="1"/>
         
