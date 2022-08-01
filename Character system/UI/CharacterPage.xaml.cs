@@ -14,12 +14,6 @@ namespace Character_system.UI
         public CharacterPage()
         {
             InitializeComponent();
-            /*List<Character.CharacterAttribute> allAttributes = new List<Character.CharacterAttribute>();
-
-            allAttributes = new List<CharacterAttribute>();
-            addObject(allAttributes,40);
-            
-            LstAttributes.ItemsSource = allAttributes;*/
         }
 
         void addObject(List<CharacterAttribute> lst , int  number = 3 )
@@ -36,19 +30,31 @@ namespace Character_system.UI
             var attributes = new CharacterStatus().allAttributes;
             foreach(var attribute in attributes)
             {
-                listboxCharacterStatus.Items.Add(attribute);
+                DockPanel dockPanel = new DockPanel();
+                dockPanel.LastChildFill = false;
+                
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = attribute.ToString();
+                textBlock.FontSize = 20;
+                DockPanel.SetDock(textBlock, Dock.Left);
+                dockPanel.Children.Add(textBlock);
+
+                Button removeButton = new Button();
+                removeButton.Width = 20;
+                removeButton.Height = 20;
+                removeButton.Click += Click_RemoveButton;
+                DockPanel.SetDock(removeButton, Dock.Right);
+                dockPanel.Children.Add(removeButton);
+
+                listboxCharacterStatus.Items.Add(dockPanel);
+
             }
-
-            Button button = new Button();
-            button.Width = 200;
-            button.Height = 50;
-            button.Content = "button";
-            button.FontSize = 14;
-
-            listboxCharacterStatus.Items.Add(button);
-            
-
             listboxCharacterObjects.ItemsSource = Character.Character.character.items;
+        }
+
+        private void Click_RemoveButton(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
