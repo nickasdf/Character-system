@@ -33,7 +33,21 @@ namespace Character_system.UI
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            listboxCharacterStatus.ItemsSource = new CharacterStatus().allAttributes;
+            var attributes = new CharacterStatus().allAttributes;
+            foreach(var attribute in attributes)
+            {
+                listboxCharacterStatus.Items.Add(attribute);
+            }
+
+            Button button = new Button();
+            button.Width = 200;
+            button.Height = 50;
+            button.Content = "button";
+            button.FontSize = 14;
+
+            listboxCharacterStatus.Items.Add(button);
+            
+
             listboxCharacterObjects.ItemsSource = Character.Character.character.items;
         }
     }

@@ -12,15 +12,19 @@
     <Grid x:Name="grid" ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.45*"/>
-            <ColumnDefinition/>
-
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
         <ListBox Name="listboxCharacterStatus" Grid.Column="0" Grid.Row="0">
             
         </ListBox>
+        <Button Content="addAttibute" Height="30" Width="100" Grid.Column="0" Grid.Row="1"/>
         
         <ListBox x:Name="listboxCharacterObjects" Grid.Column="1" Grid.Row="0">
-
+            
         </ListBox>
     </Grid>
 </Page>
