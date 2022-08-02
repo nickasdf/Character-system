@@ -18,7 +18,6 @@ namespace Character_system.Character
             name = characterAttribute.name;
             value = characterAttribute.value;
         }
-
         public override string ToString()
         {
             return name + ": " + value.ToString();
@@ -39,7 +38,6 @@ namespace Character_system.Character
             this.weight = weight;
             this.attributes = attributes;
         }
-
         public override string ToString()
         {
             string str =
