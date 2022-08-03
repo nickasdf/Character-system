@@ -59,15 +59,6 @@
     <Compile Include="Handlers\CharacterHandler.cs" />
     <Compile Include="OnStart\OnStart.cs" />
     <Compile Include="Services\LoaderReader.cs" />
-    <Compile Include="UI\CharacterPage.xaml.cs">
-      <DependentUpon>CharacterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CreateCharacterPage.xaml.cs">
-      <DependentUpon>CreateCharacterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\TestViev.xaml.cs">
-      <DependentUpon>TestViev.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,18 +72,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UI\CharacterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CreateCharacterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\TestViev.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterObject\CharacterObject.cs" />
@@ -114,6 +93,18 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Resource Include="Fonts - Copy\Roboto-Black.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-BlackItalic.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-Bold.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-BoldItalic.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-Italic.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-Light.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-LightItalic.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-Medium.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-MediumItalic.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-Regular.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-Thin.ttf" />
+    <Resource Include="Fonts - Copy\Roboto-ThinItalic.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts - Copy\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

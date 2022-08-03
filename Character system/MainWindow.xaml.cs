@@ -17,6 +17,8 @@ namespace Character_system
             InitializeComponent();
         }
 
+
+
         private void TestCharacter()
         {
             List<CharacterAttribute> characterAttributes = new List<CharacterAttribute>();
@@ -46,13 +48,49 @@ namespace Character_system
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TestCharacter();
-            if (true)
+            var attributes = new CharacterStatus().allAttributes;
+            foreach (var attribute in attributes)
             {
-                frame.Source = new Uri("UI/CharacterPage.xaml", UriKind.RelativeOrAbsolute);
+                DockPanel dockPanel = new DockPanel();
+                dockPanel.LastChildFill = false;
+
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = attribute.ToString();
+                textBlock.FontSize = 20;
+                DockPanel.SetDock(textBlock, Dock.Left);
+                dockPanel.Children.Add(textBlock);
+
+                Button removeButton = new Button();
+                removeButton.Width = 20;
+                removeButton.Height = 20;
+                removeButton.Click += Click_RemoveButton;
+                DockPanel.SetDock(removeButton, Dock.Right);
+                dockPanel.Children.Add(removeButton);
+
+                listboxCharacterStatus.Items.Add(dockPanel);
+
             }
-            else
+            listboxCharacterObjects.ItemsSource = Character.Character.character.items;
+        }
+        private void Click_RemoveButton(object sender, RoutedEventArgs e)
+        {
+
+        }
+        void addObject(List<CharacterAttribute> lst, int number = 3)
+        {
+            for (int i = 0; i < number; i++)
             {
-                frame.Source = new Uri("UI/CreateCharacterPage.xaml", UriKind.RelativeOrAbsolute);
+                lst.Add(new CharacterAttribute() { name = "Speed", value = 10 });
+                lst.Add(new CharacterAttribute() { name = "ebat", value = 10 });
+                lst.Add(new CharacterAttribute() { name = "NIHUASEBE", value = 10 });
+            }
+        }
+
+        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            {
+                DragMove();
             }
         }
     }
