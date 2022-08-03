@@ -2,7 +2,7 @@
 
 namespace Character_system.OnStart
 {
-    internal class OnStart : LoaderReader
+    internal class OnStart 
     {
         static Character.Character character;
 
