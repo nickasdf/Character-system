@@ -58,9 +58,10 @@
     <Compile Include="Character\CharacterStatus.cs" />
     <Compile Include="Handlers\CharacterHandler.cs" />
     <Compile Include="OnStart\OnStart.cs" />
-    <Compile Include="Services\CharacterIO.cs" />
 <<<<<<< HEAD
+    <Compile Include="Services\LoaderReader.cs" />
 =======
+    <Compile Include="Services\CharacterIO.cs" />
     <Compile Include="UI\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
     </Compile>
@@ -70,8 +71,7 @@
     <Compile Include="UI\TestViev.xaml.cs">
       <DependentUpon>TestViev.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\LoaderReader.cs" />
->>>>>>> 85f052a9d9693034ffaaf8058af5674c36141bdb
+>>>>>>> a7aa2ea2fcb98c663eca755a3fbd453cee9b8308
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,5 +117,6 @@
   <ItemGroup>
     <Folder Include="UI\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
