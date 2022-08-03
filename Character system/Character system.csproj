@@ -59,6 +59,19 @@
     <Compile Include="Handlers\CharacterHandler.cs" />
     <Compile Include="OnStart\OnStart.cs" />
     <Compile Include="Services\CharacterIO.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="UI\CharacterPage.xaml.cs">
+      <DependentUpon>CharacterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CreateCharacterPage.xaml.cs">
+      <DependentUpon>CreateCharacterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TestViev.xaml.cs">
+      <DependentUpon>TestViev.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\LoaderReader.cs" />
+>>>>>>> 85f052a9d9693034ffaaf8058af5674c36141bdb
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
