@@ -2,8 +2,8 @@
 using System.Windows.Controls;
 using Character_system.Character;
 using System.Collections.Generic;
-using System.IO;
-using System;
+using Character_system.UI;
+using System.Windows.Input;
 
 namespace Character_system
 {
@@ -16,17 +16,8 @@ namespace Character_system
         {
             InitializeComponent();
         }
-
-
-
         private void TestCharacter()
         {
-            List<CharacterAttribute> characterAttributes = new List<CharacterAttribute>();
-            characterAttributes.Add(new CharacterAttribute("age", 5923));
-            characterAttributes.Add(new CharacterAttribute("width", 100));
-            characterAttributes.Add(new CharacterAttribute("height", 2));
-            characterAttributes.Add(new CharacterAttribute("dick size", 17));
-
             List<CharacterObject> items = new List<CharacterObject>();
 
             List<CharacterAttribute> attributes = new List<CharacterAttribute>();
@@ -42,39 +33,61 @@ namespace Character_system
             items.Add(new CharacterObject("crown", "A gold crown", 2.4f, new List<CharacterAttribute>(attributes)));
             items.Add(new CharacterObject("Super crown", "A super gold crown", 10, new List<CharacterAttribute>(attributes)));
 
-            Character.Character.character = new Character.Character(30, "NIGGA", items, characterAttributes);
+            Character.Character.character = new Character.Character(30, "NIGGA", items);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Refresh()
         {
-            TestCharacter();
             var attributes = new CharacterStatus().allAttributes;
-            foreach (var attribute in attributes)
+
+            listboxCharacterStatus.Items.Clear();
+            foreach(var attribute in attributes)
+            {
+                DockPanel dockPanel = new DockPanel();
+                dockPanel.LastChildFill = false;
+
+                TextBlockAttribute textBlock = new TextBlockAttribute(attribute);
+                DockPanel.SetDock(textBlock, Dock.Left);
+                dockPanel.Children.Add(textBlock);
+
+                ButtonRemoveAttribute removeButton = new ButtonRemoveAttribute(attribute);
+                removeButton.Click += Click_RemoveButton;
+                
+                DockPanel.SetDock(removeButton, Dock.Right);
+                dockPanel.Children.Add(removeButton);
+
+                listboxCharacterStatus.Items.Add(dockPanel);
+            }
+            
+            
+            listboxCharacterObjects.Items.Clear();
+            foreach (var item in Character.Character.character.items)
             {
                 DockPanel dockPanel = new DockPanel();
                 dockPanel.LastChildFill = false;
 
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = attribute.ToString();
+                textBlock.Text = item.ToString();
                 textBlock.FontSize = 20;
                 DockPanel.SetDock(textBlock, Dock.Left);
                 dockPanel.Children.Add(textBlock);
-
-                Button removeButton = new Button();
-                removeButton.Width = 20;
-                removeButton.Height = 20;
-                removeButton.Click += Click_RemoveButton;
-                DockPanel.SetDock(removeButton, Dock.Right);
-                dockPanel.Children.Add(removeButton);
-
-                listboxCharacterStatus.Items.Add(dockPanel);
-
+                listboxCharacterObjects.Items.Add(item);
             }
-            listboxCharacterObjects.ItemsSource = Character.Character.character.items;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TestCharacter();
+
+            Refresh();
         }
         private void Click_RemoveButton(object sender, RoutedEventArgs e)
         {
-
+            foreach (var item in Character.Character.character.items)
+            {
+                Handlers.CharacterHandler.RemoveAttribute(item, ((ButtonRemoveAttribute)sender).Attribute.name);
+            }
+            Refresh();
         }
         void addObject(List<CharacterAttribute> lst, int number = 3)
         {
@@ -86,9 +99,9 @@ namespace Character_system
             }
         }
 
-        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
