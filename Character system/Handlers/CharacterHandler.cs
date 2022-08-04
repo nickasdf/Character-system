@@ -78,13 +78,5 @@ namespace Character_system.Handlers
         {
             character.items.RemoveAll(x => x.name == name);
         }
-        public static void AddPriorityAttribute(Character.Character character, Character.CharacterAttribute prioratyAtribute)
-        {
-            character.priorityAttribute.Add(prioratyAtribute);
-        }
-        public static void RemovePriorityAttribute(Character.Character character, string name)
-        {
-            character.priorityAttribute.RemoveAll(x => x.name == name);
-        }
     }
 }

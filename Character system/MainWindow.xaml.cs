@@ -21,12 +21,6 @@ namespace Character_system
 
         private void TestCharacter()
         {
-            List<CharacterAttribute> characterAttributes = new List<CharacterAttribute>();
-            characterAttributes.Add(new CharacterAttribute("age", 5923));
-            characterAttributes.Add(new CharacterAttribute("width", 100));
-            characterAttributes.Add(new CharacterAttribute("height", 2));
-            characterAttributes.Add(new CharacterAttribute("dick size", 17));
-
             List<CharacterObject> items = new List<CharacterObject>();
 
             List<CharacterAttribute> attributes = new List<CharacterAttribute>();
@@ -42,13 +36,13 @@ namespace Character_system
             items.Add(new CharacterObject("crown", "A gold crown", 2.4f, new List<CharacterAttribute>(attributes)));
             items.Add(new CharacterObject("Super crown", "A super gold crown", 10, new List<CharacterAttribute>(attributes)));
 
-            Character.Character.character = new Character.Character(30, "NIGGA", items, characterAttributes);
+            Character.Character.character = new Character.Character(30, "NIGGA", items);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Refresh()
         {
-            TestCharacter();
             var attributes = new CharacterStatus().allAttributes;
+            listboxCharacterStatus.Items.Clear();
             foreach (var attribute in attributes)
             {
                 DockPanel dockPanel = new DockPanel();
@@ -64,17 +58,41 @@ namespace Character_system
                 removeButton.Width = 20;
                 removeButton.Height = 20;
                 removeButton.Click += Click_RemoveButton;
+                removeButton.CommandParameter = attribute;
                 DockPanel.SetDock(removeButton, Dock.Right);
                 dockPanel.Children.Add(removeButton);
 
                 listboxCharacterStatus.Items.Add(dockPanel);
 
             }
-            listboxCharacterObjects.ItemsSource = Character.Character.character.items;
+            listboxCharacterObjects.Items.Clear();
+            foreach (var item in Character.Character.character.items)
+            {
+                DockPanel dockPanel = new DockPanel();
+                dockPanel.LastChildFill = false;
+
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = item.ToString();
+                textBlock.FontSize = 20;
+                DockPanel.SetDock(textBlock, Dock.Left);
+                dockPanel.Children.Add(textBlock);
+                listboxCharacterObjects.Items.Add(item);
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TestCharacter();
+
+            Refresh();
         }
         private void Click_RemoveButton(object sender, RoutedEventArgs e)
         {
-
+            foreach (var item in Character.Character.character.items)
+            {
+                Handlers.CharacterHandler.RemoveAttribute(item, ((CharacterAttribute)((Button)sender).CommandParameter).name);
+            }
+            Refresh();
         }
         void addObject(List<CharacterAttribute> lst, int number = 3)
         {
