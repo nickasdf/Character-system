@@ -2,8 +2,8 @@
 using System.Windows.Controls;
 using Character_system.Character;
 using System.Collections.Generic;
-using System.IO;
-using System;
+using Character_system.UI;
+using System.Windows.Input;
 
 namespace Character_system
 {
@@ -16,9 +16,6 @@ namespace Character_system
         {
             InitializeComponent();
         }
-
-
-
         private void TestCharacter()
         {
             List<CharacterObject> items = new List<CharacterObject>();
@@ -42,29 +39,27 @@ namespace Character_system
         private void Refresh()
         {
             var attributes = new CharacterStatus().allAttributes;
+
             listboxCharacterStatus.Items.Clear();
-            foreach (var attribute in attributes)
+            foreach(var attribute in attributes)
             {
                 DockPanel dockPanel = new DockPanel();
                 dockPanel.LastChildFill = false;
 
-                TextBlock textBlock = new TextBlock();
-                textBlock.Text = attribute.ToString();
-                textBlock.FontSize = 20;
+                TextBlockAttribute textBlock = new TextBlockAttribute(attribute);
                 DockPanel.SetDock(textBlock, Dock.Left);
                 dockPanel.Children.Add(textBlock);
 
-                Button removeButton = new Button();
-                removeButton.Width = 20;
-                removeButton.Height = 20;
+                ButtonRemoveAttribute removeButton = new ButtonRemoveAttribute(attribute);
                 removeButton.Click += Click_RemoveButton;
-                removeButton.CommandParameter = attribute;
+                
                 DockPanel.SetDock(removeButton, Dock.Right);
                 dockPanel.Children.Add(removeButton);
 
                 listboxCharacterStatus.Items.Add(dockPanel);
-
             }
+            
+            
             listboxCharacterObjects.Items.Clear();
             foreach (var item in Character.Character.character.items)
             {
@@ -90,7 +85,7 @@ namespace Character_system
         {
             foreach (var item in Character.Character.character.items)
             {
-                Handlers.CharacterHandler.RemoveAttribute(item, ((CharacterAttribute)((Button)sender).CommandParameter).name);
+                Handlers.CharacterHandler.RemoveAttribute(item, ((ButtonRemoveAttribute)sender).Attribute.name);
             }
             Refresh();
         }
@@ -104,9 +99,9 @@ namespace Character_system
             }
         }
 
-        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
