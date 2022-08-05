@@ -6,7 +6,8 @@
         mc:Ignorable="d"
         Title="Character system" Height="700" Width="1000" Loaded="Window_Loaded" 
         OpacityMask="#202225" Foreground="#202225" BorderBrush="#202225" 
-        WindowStyle="None" Background="#202225" AllowsTransparency="True">
+        WindowStyle="None" Background="#202225" AllowsTransparency="True" MouseDown="Grid_MouseDown" >
+         
 
 
 
@@ -37,10 +38,11 @@
                  Grid.Column="2" Grid.Row="1"  Background="#36393f" FontSize="22" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" MouseDown="Grid_MouseDown">
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" >
+            
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="51"></ColumnDefinition>
+                <ColumnDefinition Width="51"> </ColumnDefinition>
                 <ColumnDefinition Width="199*"></ColumnDefinition>
                 <ColumnDefinition Width="125*"></ColumnDefinition>
                 <ColumnDefinition Width="125*"></ColumnDefinition>

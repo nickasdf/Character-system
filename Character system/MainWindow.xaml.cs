@@ -79,7 +79,7 @@ namespace Character_system
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TestCharacter();
-
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
             Refresh();
         }
         private void Click_RemoveButton(object sender, RoutedEventArgs e)
@@ -106,6 +106,13 @@ namespace Character_system
             {
                 DragMove();
             }
+        }
+
+        
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
     }
 }
