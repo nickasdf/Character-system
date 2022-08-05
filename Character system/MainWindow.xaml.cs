@@ -16,6 +16,7 @@ namespace Character_system
         {
             InitializeComponent();
         }
+        
         private void TestCharacter()
         {
             List<CharacterObject> items = new List<CharacterObject>();

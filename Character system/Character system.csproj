@@ -65,6 +65,10 @@
     <Compile Include="UI\ButtonRemoveAttribute.cs" />
     <Compile Include="UI\TextBlockAttribute.cs" />
     <Compile Include="UI\TextBoxAttribute.cs" />
+    <Page Include="Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,9 +111,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="capital-c-letter-with-a-chevron-arrow-on-top-in-a-rounded-square_icon-icons.com_70779.ico" />
   </ItemGroup>
