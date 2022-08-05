@@ -53,7 +53,6 @@ namespace Character_system
 
                 ButtonRemoveAttribute removeButton = new ButtonRemoveAttribute(attribute);
                 removeButton.Click += Click_RemoveButton;
-                
                 DockPanel.SetDock(removeButton, Dock.Right);
                 dockPanel.Children.Add(removeButton);
 
@@ -66,20 +65,30 @@ namespace Character_system
             {
                 DockPanel dockPanel = new DockPanel();
                 dockPanel.LastChildFill = false;
-
-                TextBlock textBlock = new TextBlock();
-                textBlock.Text = item.ToString();
-                textBlock.FontSize = 20;
+                
+                TextBlockObject textBlock = new TextBlockObject(item);
                 DockPanel.SetDock(textBlock, Dock.Left);
                 dockPanel.Children.Add(textBlock);
-                listboxCharacterObjects.Items.Add(item);
+
+                ButtonRemoveObject removeButton = new ButtonRemoveObject(item);
+                removeButton.Click += RemoveButton_Click;
+                DockPanel.SetDock(removeButton, Dock.Right);
+                dockPanel.Children.Add(removeButton);
+
+                listboxCharacterObjects.Items.Add(dockPanel);
             }
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonRemoveObject buttonRemove = sender as ButtonRemoveObject;
+            Handlers.CharacterHandler.RemoveObject(Character.Character.character, buttonRemove.Object);
+            Refresh();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TestCharacter();
-            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
             Refresh();
         }
         private void Click_RemoveButton(object sender, RoutedEventArgs e)
@@ -108,8 +117,7 @@ namespace Character_system
             }
         }
 
-        
-        private void HandleEsc(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
                 Close();

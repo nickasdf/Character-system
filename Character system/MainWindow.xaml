@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="Character system" Height="700" Width="1000" Loaded="Window_Loaded" 
         OpacityMask="#202225" Foreground="#202225" BorderBrush="#202225" 
-        WindowStyle="None" Background="#202225" AllowsTransparency="True" MouseDown="Grid_MouseDown" >
+        WindowStyle="None" Background="#202225" AllowsTransparency="True" MouseDown="Grid_MouseDown" KeyDown="Window_KeyDown">
          
 
 

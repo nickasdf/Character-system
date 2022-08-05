@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Character_system.Services;
+using Character_system.Character;
 
 namespace Character_system.Handlers
 {
@@ -34,7 +35,7 @@ namespace Character_system.Handlers
                 return false;
             }
         }
-        public static void AddAttribute(Character.CharacterObject obj, Character.CharacterAttribute attribute)
+        public static void AddAttribute(CharacterObject obj, CharacterAttribute attribute)
         {
             obj.attributes.Add(attribute);
         }
@@ -46,7 +47,7 @@ namespace Character_system.Handlers
         {
             character.attributes.RemoveAll(x => x.name == name);
         }
-        public static bool AddObject(Character.Character character, Character.CharacterObject obj)
+        public static bool AddObject(Character.Character character, CharacterObject obj)
         {
             if (character.currentWeight + obj.weight < character.maxCapacity)
             {
@@ -63,7 +64,11 @@ namespace Character_system.Handlers
         {
             character.items.RemoveAt(index);
         }
-        public static bool AddObjects(Character.Character character, Character.CharacterObject obj, int number = 1)
+        public static void RemoveObject(Character.Character character, CharacterObject obj)
+        {
+            character.items.Remove(obj);
+        }
+        public static bool AddObjects(Character.Character character, CharacterObject obj, int number = 1)
         {
             foreach (var i in Enumerable.Range(0, number))
             {

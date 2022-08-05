@@ -1,7 +1,6 @@
 ﻿using Character_system.Character;
 using System.Windows.Controls;
 
-
 namespace Character_system.UI
 {
     internal class TextBlockAttribute : TextBlock

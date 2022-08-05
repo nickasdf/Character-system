@@ -63,7 +63,9 @@
     <Compile Include="OnStart\OnStart.cs" />
     <Compile Include="Services\CharacterIO.cs" />
     <Compile Include="UI\ButtonRemoveAttribute.cs" />
+    <Compile Include="UI\ButtonRemoveObject.cs" />
     <Compile Include="UI\TextBlockAttribute.cs" />
+    <Compile Include="UI\TextBlockObject.cs" />
     <Compile Include="UI\TextBoxAttribute.cs" />
     <Page Include="Dictionary1.xaml">
       <SubType>Designer</SubType>
