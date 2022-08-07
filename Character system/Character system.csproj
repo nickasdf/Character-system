@@ -113,12 +113,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Sprytes\capital-c-letter-with-a-chevron-arrow-on-top-in-a-rounded-square_icon-icons.com_70779 - Copy %282%29.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="capital-c-letter-with-a-chevron-arrow-on-top-in-a-rounded-square_icon-icons.com_70779.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Sprytes\capital-c-letter-with-a-chevron-arrow-on-top-in-a-rounded-square_icon-icons.com_70779.ico" />
+    <Resource Include="Sprytes\TopLeftCorner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprytes\CloseSign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprytes\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprytes\Minus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

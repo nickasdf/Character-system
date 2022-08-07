@@ -122,5 +122,15 @@ namespace Character_system
             if (e.Key == Key.Escape)
                 Close();
         }
+
+        private void Image_MouseDown_Close(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+
+        private void Image_MouseEnter_Close(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
