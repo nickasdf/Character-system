@@ -276,8 +276,13 @@ namespace Character_system
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //CharacterObject characterObject = new CharacterObject("[name]", "[description]", 0f, );
-            //Handlers.CharacterHandler.AddObject()
+            var list = new List<CharacterAttribute>();
+            list.Add(new CharacterAttribute("Attribute1", 1));
+            list.Add(new CharacterAttribute("Attribute2", 2));
+            CharacterObject characterObject = new CharacterObject("[name]", "[description]", 0f, list);
+            Handlers.CharacterHandler.AddObject(Character.Character.character, characterObject);
+            Refresh();
+            listboxCharacterObjects.ScrollIntoView(listboxCharacterObjects.Items[listboxCharacterObjects.Items.Count-1]);
         }
     }
 }
