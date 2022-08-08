@@ -32,13 +32,41 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Ui:ButtonRemoveObject">
                         <Image Source="/Sprytes/RedX.png" />
-
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        
-      
+        <Style x:Key="SimpleListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="Border"
+                            BorderThickness="0"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="LightSteelBlue" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Trigers" TargetType="ListBoxItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="AntiqueWhite"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+
+
 
 
 

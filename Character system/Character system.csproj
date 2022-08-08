@@ -135,5 +135,8 @@
   <ItemGroup>
     <Resource Include="Sprytes\RedX.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprytes\pluss.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
