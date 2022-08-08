@@ -46,9 +46,12 @@ namespace Character_system.Character
                 "weight: " + weight + '\n' + 
                 "attributes:" + '\n';
             string attributes = "";
-            foreach (var attribute in this.attributes)
+            for (int i = 0; i < this.attributes.Count; i++)
             {
-                attributes += '\t' + attribute.ToString() + '\n';
+                if (i != this.attributes.Count - 1)
+                    attributes += '\t' + this.attributes[i].ToString() + '\n';
+                else
+                    attributes += '\t' + this.attributes[i].ToString();
             }
             return str + attributes;
         }
