@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Character system" Height="700" Width="1000" Loaded="Window_Loaded" 
+        Title="Character system"  Loaded="Window_Loaded" 
         OpacityMask="#202225" Foreground="#202225" BorderBrush="#202225" 
-        WindowStyle="None" Background="#202225" AllowsTransparency="True" MouseDown="Grid_MouseDown" KeyDown="Window_KeyDown">
+        WindowStyle="None" Background="#202225" AllowsTransparency="True" MouseDown="Grid_MouseDown" KeyDown="Window_KeyDown" >
 
 
 
 
-    <Grid x:Name="grid" Visibility="Visible" Opacity="1" MinWidth="500" MinHeight="597" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+    <Grid x:Name="grid" Visibility="Visible"  MinWidth="500" MinHeight="597" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
 
         <Grid.ColumnDefinitions>
 
@@ -37,7 +37,13 @@
         <ListBox x:Name="listboxCharacterObjects"  Padding="20" Foreground="#d3d4d5"
                  Grid.Column="2" Grid.Row="1"  Background="#36393f" FontSize="22" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                 ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="5,0,0,0"/>
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="5,0,0,0" >
+           
+                
+
+            
+        </ListBox>
+        
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"></ColumnDefinition>
@@ -49,7 +55,7 @@
                 <ColumnDefinition Width="40*"></ColumnDefinition>
                 <ColumnDefinition Width="48*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Margin="5,5,5,5" Source="/Sprytes/TopLeftCorner.png" />
+            <Image Grid.Column="0" Margin="10,5,5,5" Source="/Sprytes/TopLeftCorner.png" />
             <TextBlock VerticalAlignment="Center" Text="Character System" Foreground="#d3d4d5" FontFamily="Arial Black" TextAlignment="Left" LineHeight="22" Grid.Column="1" FontSize="18" Height="22"/>
             <Image Grid.Column="7"  Margin="7,7,7,7" Source="/Sprytes/CloseSign.png" MouseDown="Image_MouseDown_Close" MouseEnter="Image_MouseEnter_Close" >
 
