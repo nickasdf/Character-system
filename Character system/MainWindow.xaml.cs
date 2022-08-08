@@ -32,8 +32,12 @@ namespace Character_system
             attributes.Add(new CharacterAttribute("Strength", 20));
             attributes.Add(new CharacterAttribute("Armor", 0.4f));
 
+            var att1 = new List<CharacterAttribute>();
+            att1.Add(new CharacterAttribute("Strength", 30));
+            att1.Add(new CharacterAttribute("Armor", 0.4f));
+
             items.Add(new CharacterObject("Crown", "A gold crown", 2.4f, new List<CharacterAttribute>(attributes)));
-            items.Add(new CharacterObject("Super crown", "A super gold crown", 10, new List<CharacterAttribute>(attributes)));
+            items.Add(new CharacterObject("Super crown", "A super gold crown", 10, new List<CharacterAttribute>(att1)));
 
             Character.Character.character = new Character.Character(30, "NIGGA", items);
         }
@@ -79,13 +83,23 @@ namespace Character_system
             {
                 DockPanel dockPanel = new DockPanel();
                 dockPanel.LastChildFill = false;
-                
+
+                StackPanel stackPanel = new StackPanel();
+                stackPanel.Orientation = Orientation.Vertical;
+                stackPanel.HorizontalAlignment = HorizontalAlignment.Stretch;
+                stackPanel.VerticalAlignment = VerticalAlignment.Stretch;
+
                 if (indexItemsRewrite.Contains(i))
                 {
                     TextBoxObject textBox = new TextBoxObject(Character.Character.character.items[i]);
-                    textBox.KeyDown += TextBox_KeyDown;
+                    textBox.AcceptsReturn = true;
+                    textBox.AcceptsTab = true;
                     DockPanel.SetDock(textBox, Dock.Left);
                     dockPanel.Children.Add(textBox);
+
+                    ButtonSaveObject button = new ButtonSaveObject(Character.Character.character.items[i], textBox);
+                    button.Click += Button_Click1;
+                    stackPanel.Children.Add(button);
                 }
                 else
                 {
@@ -95,38 +109,106 @@ namespace Character_system
                     dockPanel.Children.Add(textBlock);
                 }
 
+                
+
                 ButtonRemoveObject removeButton = new ButtonRemoveObject(Character.Character.character.items[i]);
                 //removeButton.VerticalAlignment = VerticalAlignment.Top;
                 removeButton.Click += RemoveButton_Click;
-                DockPanel.SetDock(removeButton, Dock.Right);
-                dockPanel.Children.Add(removeButton);
+                stackPanel.Children.Add(removeButton);
+
+                DockPanel.SetDock(stackPanel, Dock.Right);
+                dockPanel.Children.Add(stackPanel);
 
                 listboxCharacterObjects.Items.Add(dockPanel);
             }
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            try
             {
-                var textBox = sender as TextBoxObject;
-                textBox.ShouldRewrite = false;
-                string[] lines = textBox.Text.Split('\n');
+                var buttonSave = sender as ButtonSaveObject;
+                buttonSave.TextBoxObject.ShouldRewrite = false;
+                var @object = buttonSave.Object;
+                string[] lines = buttonSave.TextBoxObject.Text.Split('\n');
                 if (!lines[0].StartsWith("name: "))
-                    throw new Exception("ніт");
-                textBox.Object.name = lines[0].Substring("name: ".Length);
+                    throw new Exception("name");
+                @object.name = lines[0].Substring("name: ".Length);
                 if (!lines[1].StartsWith("description: "))
-                    throw new Exception("xyz");
-                textBox.Object.description = lines[1].Substring("description: ".Length);
+                    throw new Exception("description");
+                @object.description = lines[1].Substring("description: ".Length);
                 if (!lines[2].StartsWith("weight: "))
-                    throw new Exception("AAAAAA");
-                textBox.Object.weight = float.Parse(lines[2].Substring("weight: ".Length));
-                
+                    throw new Exception("weight");
+                @object.weight = float.Parse(lines[2].Substring("weight: ".Length));
 
+                var attributes = new List<string>(lines);
+                attributes.RemoveRange(0, 4);
+                for (int i = 0; i < @object.attributes.Count; i++)
+                {
+                    if (!attributes[i].StartsWith("\t"))
+                        throw new Exception("\\t");
 
+                    @object.attributes[i].name = attributes[i].Substring(1, attributes[i].Substring(1).IndexOf(':'));
+                    @object.attributes[i].value = float.Parse(attributes[i].Substring(attributes[i].IndexOf(':') + 2));
+                }
+                if (lines.Length-4 > @object.attributes.Count)
+                { 
+                    attributes.RemoveRange(0, @object.attributes.Count);
+                    for (int i = 0; i < @object.attributes.Count; i++)
+                    {
+                        CharacterAttribute characterAttribute = new CharacterAttribute(
+                            attributes[i].Substring(1, attributes[i].Substring(1).IndexOf(':')),
+                            float.Parse(attributes[i].Substring(attributes[i].IndexOf(':') + 2)));
+                        Handlers.CharacterHandler.AddAttribute(@object, characterAttribute);
+                    }
+                }
+                Refresh();
+            }
+            catch
+            {
+                //MessageBox.Show(exception.Message);
                 Refresh();
             }
         }
+
+        //private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.Key == Key.Enter && false)
+        //        {
+        //            var textBox = sender as TextBoxObject;
+        //            textBox.ShouldRewrite = false;
+        //            string[] lines = textBox.Text.Split('\n');
+        //            if (!lines[0].StartsWith("name: "))
+        //                throw new Exception("name");
+        //            textBox.Object.name = lines[0].Substring("name: ".Length);
+        //            if (!lines[1].StartsWith("description: "))
+        //                throw new Exception("description");
+        //            textBox.Object.description = lines[1].Substring("description: ".Length);
+        //            if (!lines[2].StartsWith("weight: "))
+        //                throw new Exception("weight");
+        //            textBox.Object.weight = float.Parse(lines[2].Substring("weight: ".Length));
+
+        //            var attributes = new List<string>(lines);
+        //            attributes.RemoveRange(0, 4);
+        //            for (int i = 0; i < textBox.Object.attributes.Count; i++)
+        //            {
+        //                if (!attributes[i].StartsWith("\t"))
+        //                    throw new Exception("\\t");
+
+        //                textBox.Object.attributes[i].name = attributes[i].Substring(1, attributes[i].Substring(1).IndexOf(':'));
+        //                textBox.Object.attributes[i].value = float.Parse(attributes[i].Substring(attributes[i].IndexOf(':')+2));
+        //            }
+        //            Refresh();
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        //MessageBox.Show(exception.Message);
+        //        Refresh();
+        //    }
+        //}
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -190,6 +272,12 @@ namespace Character_system
         private void Image_MouseEnter_Close(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //CharacterObject characterObject = new CharacterObject("[name]", "[description]", 0f, );
+            //Handlers.CharacterHandler.AddObject()
         }
     }
 }
