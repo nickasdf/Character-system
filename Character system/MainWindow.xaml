@@ -35,7 +35,7 @@
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
         <ListBox x:Name="listboxCharacterObjects"  Padding="20" Foreground="#d3d4d5"
-                 Grid.Column="2" Grid.Row="1"  Background="#36393f" FontSize="22" 
+                 Grid.Column="2" Grid.Row="1"  Background="#36393f" FontSize="22" HorizontalContentAlignment="Stretch"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="5,0,0,0" >
            

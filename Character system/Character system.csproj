@@ -67,6 +67,7 @@
     <Compile Include="UI\TextBlockAttribute.cs" />
     <Compile Include="UI\TextBlockObject.cs" />
     <Compile Include="UI\TextBoxAttribute.cs" />
+    <Compile Include="UI\TextBoxObject.cs" />
     <Page Include="Dictionary1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
