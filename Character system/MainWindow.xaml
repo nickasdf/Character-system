@@ -66,6 +66,7 @@
 
 
             <Button Content="Add Object" Grid.Column="3" Width="120" Height="25" FontSize="15" Click="Button_Click"/>
+            <TextBox Grid.Column="4" Margin="3" FontSize="15" Width="300" Height="25"> Search</TextBox>
 
 
         </Grid>
