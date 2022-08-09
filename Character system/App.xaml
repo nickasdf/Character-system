@@ -36,6 +36,16 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="Ui:ButtonSaveObject">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Ui:ButtonSaveObject">
+                        <Image Source="/Sprytes/pluss.png" />
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
       
 
     </Application.Resources>
