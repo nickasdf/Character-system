@@ -65,7 +65,7 @@
             <Image Source="/Sprytes/Minus.png" Grid.Column="6" Margin=" 20,1,1,1" MouseDown="Image_MouseDown"/>
 
 
-
+            <Button Content="Add Object" Grid.Column="3" Width="120" Height="25" FontSize="15" Click="Button_Click"/>
 
 
         </Grid>

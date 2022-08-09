@@ -64,6 +64,7 @@
     <Compile Include="Services\CharacterIO.cs" />
     <Compile Include="UI\ButtonRemoveAttribute.cs" />
     <Compile Include="UI\ButtonRemoveObject.cs" />
+    <Compile Include="UI\ButtonSaveObject.cs" />
     <Compile Include="UI\TextBlockAttribute.cs" />
     <Compile Include="UI\TextBlockObject.cs" />
     <Compile Include="UI\TextBoxAttribute.cs" />
