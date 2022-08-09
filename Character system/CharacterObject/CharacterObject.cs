@@ -38,6 +38,13 @@ namespace Character_system.Character
             this.weight = weight;
             this.attributes = attributes;
         }
+        public CharacterObject(CharacterObject characterObject)
+        {
+            name = characterObject.name;
+            description = characterObject.description;
+            weight = characterObject.weight;
+            attributes = new List<CharacterAttribute>(characterObject.attributes);
+        }
         public override string ToString()
         {
             string str =

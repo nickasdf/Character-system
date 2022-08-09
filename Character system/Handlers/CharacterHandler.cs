@@ -2,6 +2,7 @@
 using System.Linq;
 using Character_system.Services;
 using Character_system.Character;
+using System.Collections.Generic;
 
 namespace Character_system.Handlers
 {
@@ -14,7 +15,7 @@ namespace Character_system.Handlers
                 Character.Character.character = CharacterIO.ReadFromBinaryFile<Character.Character>(path);
                 return true;
             }
-            catch (Exception)
+            catch
             {
                 return false;
             }
@@ -82,6 +83,26 @@ namespace Character_system.Handlers
         public static void RemoveAllObjects(Character.Character character, string name)
         {
             character.items.RemoveAll(x => x.name == name);
+        }
+
+        public static int FindCharacterObjectByName(Character.Character character, string name)
+        {
+            List<CharacterObject> items = new List<CharacterObject>();
+            foreach (var item in character.items)
+            {
+                items.Add(new CharacterObject(item));
+            }
+            name = name.ToLower();
+            for (int i = 0; i < items.Count;i++)
+            {
+                items[i].name = items[i].name.ToLower();
+                if (items[i].name == name || items[i].name.Contains(name))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

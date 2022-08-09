@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Character_system.Character
 {
+    [Serializable]
     internal class Character
     {
         public string name;
@@ -18,6 +16,13 @@ namespace Character_system.Character
             this.maxCapacity = maxCapacity;
             currentWeight = 0;
             this.items = items;
+        }
+        public Character(Character character)
+        {
+            name = character.name;
+            maxCapacity = character.maxCapacity;
+            currentWeight = character.currentWeight;
+            items = new List<CharacterObject>(character.items);
         }
         public override string ToString()
         {

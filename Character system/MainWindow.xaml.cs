@@ -44,6 +44,22 @@ namespace Character_system
 
         private void Refresh()
         {
+            if (Character.Character.character == null)
+            {
+                if (!Handlers.CharacterHandler.LoadCharacter("character"))
+                {
+                    var list = new List<CharacterAttribute>();
+                    list.Add(new CharacterAttribute("Attribute1", 1));
+                    list.Add(new CharacterAttribute("Attribute2", 2));
+                    CharacterObject characterObject = new CharacterObject("[name]", "[description]", 0f, list);
+                    Character.Character.character = new Character.Character(100, "DemoName", new List<CharacterObject> { characterObject });
+                }
+            }
+            else
+            {
+                Handlers.CharacterHandler.SaveCharacter("character");
+            }
+
             var attributes = new CharacterStatus().allAttributes;
 
             listboxCharacterStatus.Items.Clear();
@@ -166,49 +182,9 @@ namespace Character_system
             }
             catch
             {
-                //MessageBox.Show(exception.Message);
                 Refresh();
             }
         }
-
-        //private void TextBox_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.Key == Key.Enter && false)
-        //        {
-        //            var textBox = sender as TextBoxObject;
-        //            textBox.ShouldRewrite = false;
-        //            string[] lines = textBox.Text.Split('\n');
-        //            if (!lines[0].StartsWith("name: "))
-        //                throw new Exception("name");
-        //            textBox.Object.name = lines[0].Substring("name: ".Length);
-        //            if (!lines[1].StartsWith("description: "))
-        //                throw new Exception("description");
-        //            textBox.Object.description = lines[1].Substring("description: ".Length);
-        //            if (!lines[2].StartsWith("weight: "))
-        //                throw new Exception("weight");
-        //            textBox.Object.weight = float.Parse(lines[2].Substring("weight: ".Length));
-
-        //            var attributes = new List<string>(lines);
-        //            attributes.RemoveRange(0, 4);
-        //            for (int i = 0; i < textBox.Object.attributes.Count; i++)
-        //            {
-        //                if (!attributes[i].StartsWith("\t"))
-        //                    throw new Exception("\\t");
-
-        //                textBox.Object.attributes[i].name = attributes[i].Substring(1, attributes[i].Substring(1).IndexOf(':'));
-        //                textBox.Object.attributes[i].value = float.Parse(attributes[i].Substring(attributes[i].IndexOf(':')+2));
-        //            }
-        //            Refresh();
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        //MessageBox.Show(exception.Message);
-        //        Refresh();
-        //    }
-        //}
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -229,7 +205,6 @@ namespace Character_system
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            TestCharacter();
             Refresh();
         }
         private void Click_RemoveButton(object sender, RoutedEventArgs e)
@@ -239,15 +214,6 @@ namespace Character_system
                 Handlers.CharacterHandler.RemoveAttribute(item, ((ButtonRemoveAttribute)sender).Attribute.name);
             }
             Refresh();
-        }
-        void addObject(List<CharacterAttribute> lst, int number = 3)
-        {
-            for (int i = 0; i < number; i++)
-            {
-                lst.Add(new CharacterAttribute() { name = "Speed", value = 10 });
-                lst.Add(new CharacterAttribute() { name = "ebat", value = 10 });
-                lst.Add(new CharacterAttribute() { name = "NIHUASEBE", value = 10 });
-            }
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -283,6 +249,21 @@ namespace Character_system
             Handlers.CharacterHandler.AddObject(Character.Character.character, characterObject);
             Refresh();
             listboxCharacterObjects.ScrollIntoView(listboxCharacterObjects.Items[listboxCharacterObjects.Items.Count-1]);
+        }
+
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Refresh();
+            if (e.Key == Key.Enter)
+            {
+                var index = Handlers.CharacterHandler.FindCharacterObjectByName(Character.Character.character, searchTextBox.Text);
+                if (index != -1)
+                {
+                    listboxCharacterObjects.ScrollIntoView(Character.Character.character.items[index]);
+                    listboxCharacterObjects.SelectedIndex = index;
+                }
+
+            }
         }
     }
 }
