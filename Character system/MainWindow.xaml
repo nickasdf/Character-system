@@ -57,12 +57,12 @@
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Margin="10,5,5,5" Source="/Sprytes/TopLeftCorner.png" />
             <TextBlock VerticalAlignment="Center" Text="Character System" Foreground="#d3d4d5" FontFamily="Arial Black" TextAlignment="Left" LineHeight="22" Grid.Column="1" FontSize="18" Height="22"/>
-            <Image Grid.Column="7"  Margin="7,7,7,7" Source="/Sprytes/CloseSign.png" MouseDown="Image_MouseDown_Close" MouseEnter="Image_MouseEnter_Close" >
+            <Image Grid.Column="7"  Margin="7,7,7,7" Source="/Sprytes/CloseSign.png" MouseDown="Image_MouseDown_Close"  >
 
             </Image>
 
-            <Image Grid.Column="6"  Source="/Sprytes/images.png" Margin="5,5,5,5"/>
-            <Image Source="/Sprytes/Minus.png" Grid.Column="5" Margin=" 1" />
+            
+            <Image Source="/Sprytes/Minus.png" Grid.Column="6" Margin=" 20,1,1,1" MouseDown="Image_MouseDown"/>
 
 
 

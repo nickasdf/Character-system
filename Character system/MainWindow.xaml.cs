@@ -187,9 +187,9 @@ namespace Character_system
             Close();
         }
 
-        private void Image_MouseEnter_Close(object sender, MouseEventArgs e)
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            WindowState = WindowState.Minimized;
         }
     }
 }
